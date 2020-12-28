@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+
+    <groupId>com.wilinlinq</groupId>
+    <artifactId>linlinq-commons</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <resource.delimiter>@</resource.delimiter>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <apache-commons-lang3.version>3.11</apache-commons-lang3.version>
+        <apache-commons-collections4.version>4.4</apache-commons-collections4.version>
+        <apache-commons-compress.version>1.20</apache-commons-compress.version>
+        <apache-commons-math.version>3.6.1</apache-commons-math.version>
+        <apache-commons-text.version>1.9</apache-commons-text.version>
+        <apache-commons-pool2.version>2.9.0</apache-commons-pool2.version>
+        <apache-commons-io.version>1.3.2</apache-commons-io.version>
+        <apache-commons-csv.version>1.8</apache-commons-csv.version>
+        <apache-commons-configuration2.version>2.7</apache-commons-configuration2.version>
+        <apache-commons-exec.version>1.3</apache-commons-exec.version>
+        <apache-commons-mail.version>1.5</apache-commons-mail.version>
+        <apache-commons-codec.version>1.15</apache-commons-codec.version>
+
+        <lombok.version>1.18.16</lombok.version>
+
+        <httpclient.version>4.5.13</httpclient.version>
+
+        <slf4j.version>1.7.30</slf4j.version>
+        <log4j2.version>2.14.0</log4j2.version>
+
+        <google-guava.version>30.0-jre</google-guava.version>
+        <google-gson.version>2.8.6</google-gson.version>
+
+        <jackson.version>2.12.0</jackson.version>
+        <jackson-bom.version>${jackson.version}</jackson-bom.version>
+
+        <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+        <maven-dependency-plugin.version>3.1.2</maven-dependency-plugin.version>
+        <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
+        <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
+        <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
+        <maven-invoker-plugin.version>3.2.1</maven-invoker-plugin.version>
+        <maven-help-plugin.version>3.2.0</maven-help-plugin.version>
+        <maven-jar-plugin.version>3.1.2</maven-jar-plugin.version>
+        <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
+        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+        <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
+        <maven-site-plugin.version>3.8.2</maven-site-plugin.version>
+        <maven-source-plugin.version>3.1.0</maven-source-plugin.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <maven-war-plugin.version>3.2.3</maven-war-plugin.version>
+    </properties>
+
+    <!-- 依赖管理 -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- 通用 lang3，Java工具类包 -->
+            <!-- Apache Commons Lang, a package of Java utility classes for the classes that are in java.lang's hierarchy, or are considered to be so standard as to justify existence in java.lang.  -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${apache-commons-lang3.version}</version>
+            </dependency>
+            <!-- 通用集合工具类 -->
+            <!-- The Apache Commons Collections package contains types that extend and augment the Java Collections Framework.  -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${apache-commons-collections4.version}</version>
+            </dependency>
+            <!-- 通用压缩工具类 -->
+            <!-- Apache Commons Compress software defines an API for working with compression and archive formats. These include: bzip2, gzip, pack200, lzma, xz, Snappy, traditional Unix Compress, DEFLATE, DEFLATE64, LZ4, Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.  -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-compress</artifactId>
+                <version>${apache-commons-compress.version}</version>
+            </dependency>
+            <!-- 通用数学工具类 -->
+            <!-- The Apache Commons Math project is a library of lightweight, self-contained mathematics and statistics components addressing the most common practical problems not immediately available in the Java programming language or commons-lang.  -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-math3</artifactId>
+                <version>${apache-commons-math.version}</version>
+            </dependency>
+            <!-- 通用文本工具类 -->
+            <!-- Apache Commons Text is a library focused on algorithms working on strings. -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-text</artifactId>
+                <version>${apache-commons-text.version}</version>
+            </dependency>
+            <!-- 通用对象池工具类 -->
+            <!-- The Apache Commons Object Pooling Library. -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${apache-commons-pool2.version}</version>
+            </dependency>
+            <!-- 通用IO工具类 -->
+            <!-- Commons-IO contains utility classes, stream implementations, file filters, and endian classes. -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${apache-commons-io.version}</version>
+            </dependency>
+            <!-- 通用csv工具类 -->
+            <!-- The Apache Commons CSV library provides a simple interface for reading and writing CSV files of various types. -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-csv</artifactId>
+                <version>${apache-commons-csv.version}</version>
+            </dependency>
+            <!-- 通用读配置文件工具类 -->
+            <!-- Tools to assist in the reading of configuration/preferences files in various formats -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-configuration2</artifactId>
+                <version>${apache-commons-configuration2.version}</version>
+            </dependency>
+            <!-- 通用执行外部进程库 -->
+            <!-- Apache Commons Exec is a library to reliably execute external processes from within the JVM. -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-exec</artifactId>
+                <version>${apache-commons-exec.version}</version>
+            </dependency>
+            <!-- 通用邮件工具类 -->
+            <!-- Apache Commons Email aims to provide an API for sending email. It is built on top of the JavaMail API, which it aims to simplify. -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-email</artifactId>
+                <version>${apache-commons-mail.version}</version>
+            </dependency>
+            <!-- 通用加密解密工具类 -->
+            <!-- The Apache Commons Codec package contains simple encoder and decoders for various formats such as Base64 and Hexadecimal. In addition to these widely used encoders and decoders, the codec package also maintains a collection of phonetic encoding utilities. -->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${apache-commons-codec.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- apache http 客户端工具类 -->
+            <!-- Apache HttpComponents Client -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-logging</artifactId>
+                        <groupId>commons-logging</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- apache http 客户端 Fluent API -->
+            <!-- Apache HttpComponents Client fluent API -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>fluent-hc</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+            <!-- apache http 客户端缓存 -->
+            <!-- Apache HttpComponents HttpClient - Cache -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient-cache</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+            <!-- apache http 客户端 OSGi -->
+            <!-- Apache HttpComponents Client (OSGi bundle) -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient-osgi</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+            <!-- apache http 客户端 windows -->
+            <!-- Apache HttpClient Windows specific functionality -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient-win</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+            <!-- apache http 客户端 MIME 编码实体 -->
+            <!-- Apache HttpComponents HttpClient - MIME coded entities -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpmime</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+
+            <!--  slf4j API -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <!--  slf4j API 扩展 -->
+            <!-- Extensions to the SLF4J API -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-ext</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <!-- slf4j jcl 绑定 -->
+            <!-- SLF4J JCL Binding -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-jcl</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <!-- slf4j jcl 实现 -->
+            <!-- JCL 1.2 implemented over SLF4J -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <!-- slf4j jul 实现 -->
+            <!-- JUL to SLF4J bridge -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jul-to-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <!-- slf4j Log4j 实现 -->
+            <!-- Log4j implemented over SLF4J -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>log4j-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <!-- slf4j jdk14 -->
+            <!-- SLF4J JDK14 Binding -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-jdk14</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <!-- slf4j log4j-12 绑定 -->
+            <!-- SLF4J LOG4J-12 Binding -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <!-- slf4j 不操作实现 -->
+            <!-- SLF4J NOP Binding -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-nop</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <!-- slf4j 简单实现 -->
+            <!-- SLF4J Simple binding -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+                <version>${slf4j.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-bom</artifactId>
+                <version>${log4j2.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- google java 工具类 -->
+            <!-- Guava is a suite of core and expanded libraries that include utility classes, google's collections, io classes, and much much more. -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${google-guava.version}</version>
+            </dependency>
+            <!-- google json 工具类 -->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${google-gson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson</groupId>
+                <artifactId>jackson-bom</artifactId>
+                <version>${jackson-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!--
+        &lt;!&ndash; 发布管理 &ndash;&gt;
+        <distributionManagement>
+            <snapshotRepository>
+                <id>snapshots</id>
+                <name>快照仓库</name>
+                <url></url>
+            </snapshotRepository>
+        </distributionManagement>
+    -->
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${maven-clean-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven-deploy-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${maven-dependency-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${maven-enforcer-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${maven-failsafe-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>${maven-install-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-invoker-plugin</artifactId>
+                    <version>${maven-invoker-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-help-plugin</artifactId>
+                    <version>${maven-help-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven-jar-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven-javadoc-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven-resources-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>${maven-shade-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${maven-site-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven-source-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${maven-war-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
